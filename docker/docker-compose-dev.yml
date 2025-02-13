@@ -1,0 +1,47 @@
+services:
+  auto-xe-reg:
+    container_name: auto-xe-reg
+    image: container-registry.oracle.com/database/express:latest
+    ports: 
+      - 1521:1521
+    environment:
+      - ORACLE_PWD=[PASSWORD]
+    volumes:
+      - db-vol-reg:/opt/oracle/oradata
+    hostname: database
+    networks:
+      - oracle-net
+    restart: always
+  auto-ords-reg:
+    container_name: auto-ords-reg
+    restart: always
+    depends_on:
+      auto-xe-reg:
+        condition: service_healthy
+    networks:
+      - oracle-net
+    volumes:
+      - ./variables:/opt/oracle/variables
+      - ords-config-reg:/etc/ords/config
+    ports:
+      - 8181:8181
+    image: container-registry.oracle.com/database/ords-developer:latest
+  auto-db-app-deploy:
+    build:
+      context: .
+      dockerfile: Dockerfile.deploy
+    container_name: auto-db-app-deploy
+    depends_on:
+      auto-xe-reg:
+        condition: service_healthy
+    networks:
+      - oracle-net
+volumes:
+  db-vol-reg:
+    name: db-vol-reg
+    external: false
+  ords-config-reg:
+    name: ords-config-reg
+networks: 
+  oracle-net:
+    driver: bridge

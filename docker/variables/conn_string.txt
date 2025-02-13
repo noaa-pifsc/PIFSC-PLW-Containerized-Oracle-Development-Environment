@@ -1,0 +1,1 @@
+CONN_STRING=sys/[PASSWORD]@database:1521/XEPDB1
