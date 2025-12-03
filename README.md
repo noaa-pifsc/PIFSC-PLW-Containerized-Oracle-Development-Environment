@@ -118,7 +118,7 @@ There are two different runtime scenarios implemented in this project:
 ## Connection Information
 For the following connections refer to the [.env](./docker/.env) configuration file for the corresponding values
 -   Database connections:
-    -   hostname: localhost:1521/XEPDB1
+    -   hostname: localhost:1521/FREEPDB1
     -   username: SYSTEM or SYS AS SYSDBA
     -   password: ${ORACLE_PWD}
 -   Apex server:
