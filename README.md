@@ -6,7 +6,7 @@ The PIFSC Containerized Oracle Developer Environment (CODE) project was develope
 ## Resources
 -   ### CODE Version Control Information
     -   URL: https://github.com/noaa-pifsc/PIFSC-Containerized-Oracle-Development-Environment
-    -   Version: 1.2 (git tag: CODE_v1.2)
+    -   Version: 1.3 (git tag: CODE_v1.3)
 -   [CODE Demonstration Outline](./docs/demonstration_outline.md)
 -   [CODE Repository Fork Diagram](./docs/CODE_fork_diagram.drawio.png)
     -   [CODE Repository Fork Diagram source code](./docs/CODE_fork_diagram.drawio)
@@ -14,9 +14,10 @@ The PIFSC Containerized Oracle Developer Environment (CODE) project was develope
 ## Dependencies
 \* Note: all dependencies are implemented as git submodules in the [modules](./modules) folder
 -   ### Container Deployment Scripts (CDS) Version Control Information
+    -   folder path: [modules/CDS](./modules/CDS)
     -   Version Control Information:
-        -   URL: <git@picgitlab.nmfs.local:centralized-data-tools/pifsc-container-deployment-scripts.git>
-        -   Database: 1.1 (Git tag: pifsc_container_deployment_scripts_v1.1)
+        -   URL: <git@github.com:noaa-pifsc/PIFSC-Container-Deployment-Scripts.git>
+        -   Scripts: 1.1 (Git tag: pifsc_container_deployment_scripts_v1.1)
 
 # Prerequisites
 -   Docker 
@@ -63,7 +64,7 @@ There are two different runtime scenarios implemented in this project:
 
 ## Automated Deployment Process
 -   ### Prepare the project
-    -   Recursively clone the [CODE repository](#code-version-control-information) to a working directory
+    -   Recursively clone (use --recurse-submodules option) the [CODE repository](#code-version-control-information) to a working directory
 -   ### Build and Run the container 
     -   Execute the [build_deploy_project.sh](./deployment_scripts/build_deploy_project.sh) bash script with an environment name parameter (dev, test, prod) or if you don't specify an environment name the script will prompt you
     -   Scenarios:
@@ -130,3 +131,9 @@ For the following connections refer to the [.env](./docker/.env) configuration f
     -   password: ${ORACLE_PWD}
 -   ORDS server:
     -   hostname: http://localhost:8181/ords
+
+## License
+See the [LICENSE.md](./LICENSE.md) for details
+
+## Disclaimer
+This repository is a scientific product and is not official communication of the National Oceanic and Atmospheric Administration, or the United States Department of Commerce. All NOAA GitHub project code is provided on an ‘as is’ basis and the user assumes responsibility for its use. Any claims against the Department of Commerce or Department of Commerce bureaus stemming from the use of this GitHub project will be governed by all applicable Federal law. Any reference to specific commercial products, processes, or services by service mark, trademark, manufacturer, or otherwise, does not constitute or imply their endorsement, recommendation or favoring by the Department of Commerce. The Department of Commerce seal and logo, or the seal and logo of a DOC bureau, shall not be used in any manner to imply endorsement of any commercial product or activity by DOC or the United States Government.
