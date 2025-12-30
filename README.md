@@ -41,9 +41,9 @@ The PIFSC Library Website (PLW) Containerized Oracle Developer Environment (CODE
 -   ### Build and Run the Containers 
     -   See the CODE [Build and Run the Containers](https://github.com/noaa-pifsc/PIFSC-Containerized-Oracle-Development-Environment?tab=readme-ov-file#build-and-run-the-containers) for details
     -   #### PLW Database Deployment
-        -   [create_docker_schemas.sql](https://picgitlab.nmfs.local/PIFSC/pifsc-library-website/-/blob/Branch_PLW_CODE_v1.0/SQL/dev_container_setup/create_docker_schemas.sql?ref_type=heads) is executed by the SYS schema to create the PLW schema and grant the necessary privileges
-        -   [deploy_dev.sql](https://picgitlab.nmfs.local/PIFSC/pifsc-library-website/-/blob/Branch_PLW_CODE_v1.0/SQL/automated_deployments/deploy_dev.sql?ref_type=heads) is executed with the PICLIB schema to deploy the objects to the PICLIB schema
-        -   [deploy_PLW_dev.sql](https://picgitlab.nmfs.local/PIFSC/pifsc-library-website/-/blob/Branch_PLW_CODE_v1.0/SQL/automated_deployments/deploy_PLW_dev.sql?ref_type=heads) is executed with the PUB_RPTS schema to deploy the objects to the PUB_RPTS schema
+        -   [create_docker_schemas.sql](https://picgitlab.nmfs.local/PIFSC/pifsc-library-website/-/blob/master/SQL/dev_container_setup/create_docker_schemas.sql?ref_type=heads) is executed by the SYS schema to create the PLW schema and grant the necessary privileges
+        -   [deploy_dev.sql](https://picgitlab.nmfs.local/PIFSC/pifsc-library-website/-/blob/master/SQL/automated_deployments/deploy_dev.sql?ref_type=heads) is executed with the PICLIB schema to deploy the objects to the PICLIB schema
+        -   [deploy_PLW_dev.sql](https://picgitlab.nmfs.local/PIFSC/pifsc-library-website/-/blob/master/SQL/automated_deployments/deploy_PLW_dev.sql?ref_type=heads) is executed with the PUB_RPTS schema to deploy the objects to the PUB_RPTS schema
 
 ## Customization Process
 -   ### Implementation
@@ -67,7 +67,7 @@ The PIFSC Library Website (PLW) Containerized Oracle Developer Environment (CODE
 ## Connection Information
 -   See the CODE [connection information documentation](https://github.com/noaa-pifsc/PIFSC-Containerized-Oracle-Development-Environment?tab=readme-ov-file/-/blob/main/README.md?ref_type=heads#connection-information) for details
 -   ### PLW Database Connection Information
-    -   Connection information can be found in [create_docker_schemas.sql](https://picgitlab.nmfs.local/PIFSC/pifsc-library-website/-/blob/Branch_PLW_CODE_v1.0/SQL/dev_container_setup/create_docker_schemas.sql?ref_type=heads)
+    -   Connection information can be found in [create_docker_schemas.sql](https://picgitlab.nmfs.local/PIFSC/pifsc-library-website/-/blob/master/SQL/dev_container_setup/create_docker_schemas.sql?ref_type=heads)
 
 ## License
 See the [LICENSE.md](./LICENSE.md) for details
