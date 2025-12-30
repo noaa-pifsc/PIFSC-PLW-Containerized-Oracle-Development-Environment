@@ -1,6 +1,33 @@
+# override the secrets configuration
+secrets:
+  plw_db_username_secret:
+    external: false
+    file: ../secrets/plw_user.txt
+  plw_db_password_secret:
+    external: false
+    file: ../secrets/plw_pass.txt
 services:
-  db-ords-deploy:
-    # MOUNT: Map the SQL files from the PRI submodule to where 
-    # the CODE deploy container expects to find them.
+  # Override PLW configuration
+  pifsc-library-website:
+    # specify the database network
+    networks:
+      - oracle-net
+    build:
+      # Explicitly set the folder containing the Dockerfile
+      context: ../modules/PLW
+      dockerfile: docker/Dockerfile
+    depends_on:
+      db:
+        condition: service_healthy
+    # define the mounted volumes for the PLW apps
     volumes:
-      # add in entries to map the submodule volumes to allow the database schemas/objects or apex apps to be deployed from container
+      - "../modules/PLW/docker/src/frontend:/var/www/html"
+      - "../modules/PLW/docker/src/backend:/usr/src/app"
+      - "../modules/PLW/modules/php-shared-library:/usr/src/app/dependencies"
+  db-ords-deploy:
+    # define the mounted volumes for the DB/Apex apps 
+    volumes:
+      - ../modules/PLW/SQL:/usr/src/PLW/SQL
+networks:
+  oracle-net:
+    name: oracle-net

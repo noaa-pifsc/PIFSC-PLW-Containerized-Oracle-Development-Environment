@@ -7,6 +7,7 @@ build_deploy_dev_environment ()
 	
 	# include the docker environment variables
 	local COMPOSE_FILES=("--env-file" "./docker/.env")
+	COMPOSE_FILES+=("--env-file" "./secrets/.env")
 	
 	# include the db and db-ords-deploy services
 	COMPOSE_FILES+=("-f" "docker/CODE-db-deploy.yml")
@@ -17,8 +18,8 @@ build_deploy_dev_environment ()
 		COMPOSE_FILES+=("-f" "docker/CODE-db-named-volume.yml")
 	fi
 
-	# include the ORDS service
-	COMPOSE_FILES+=("-f" "docker/CODE-ords.yml")
+	# include pifsc-library-website service for the docker web application
+	COMPOSE_FILES+=("-f" "modules/PLW/docker/docker-compose.yml")
 
 	# add custom docker compose to integrate additional services and/or map project-specific resources for the db-ords-deploy service to automatically deploy
 	COMPOSE_FILES+=("-f" "docker/custom-docker-compose.yml")
