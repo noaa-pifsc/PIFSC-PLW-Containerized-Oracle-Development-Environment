@@ -1,0 +1,30 @@
+# override the secrets configuration
+secrets:
+  plw_db_username_secret:
+    name: ${COMPOSE_PROJECT_NAME}_plw_db_username_secret
+    external: true
+  plw_db_password_secret:
+    name: ${COMPOSE_PROJECT_NAME}_plw_db_password_secret
+    external: true
+ services:
+  # Override pifsc-library-website configuration
+  pifsc-library-website:
+    # specify the database network
+    environment:
+      DB_HOST: ${DBHOST}
+      DB_SERVICE_NAME: ${DBSERVICENAME}
+    networks:
+      - oracle-net
+    build:
+      # Explicitly set the folder containing the Dockerfile
+      context: ../../projects/PLW/modules/PLW
+      dockerfile: container_application_deployment/Dockerfile
+    # define the mounted volumes for the PLW apps
+    volumes:
+      - "../../projects/PLW/modules/PLW/src/frontend:/var/www/html"
+      - "../../projects/PLW/modules/PLW/src/backend:/usr/src/app"
+      - "../../projects/PLW/modules/PLW/modules/php-shared-library:/usr/src/app/dependencies"
+    ports:
+      - "0.0.0.0:5020:80"
+networks:
+  oracle-net:
