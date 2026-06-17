@@ -25,6 +25,9 @@ services:
       - "../../projects/PLW/modules/PLW/src/backend:/usr/src/app"
       - "../../projects/PLW/modules/PLW/modules/php-shared-library:/usr/src/app/dependencies"
     ports:
-      - "0.0.0.0:5020:80"
+      - target: 80
+        published: ${CONTAINER_APP_PORT}
+        protocol: tcp
+        mode: host
 networks:
   oracle-net:

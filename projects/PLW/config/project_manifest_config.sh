@@ -12,6 +12,9 @@
 	# create PUB_RPTS schema objects
 	DB_SCRIPTS_MAP+=("${BUILD_PATH}/../../projects/PLW/modules/PLW/SQL|@automated_deployments/deploy_PLW_dev.sql|plw_db_username_secret|plw_db_password_secret")
 
+	# define the array of non-sensitive environment variable names that are exported for use in the container
+	CUSTOM_ENV_VARS+=("CONTAINER_APP_PORT")
+
 	# define the array of compose files that are used by the individual projects (specify the path relative to the core/build directory
 
 	# add the secrets for PRI to the code-db-ords-deploy container
